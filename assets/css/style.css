@@ -29,3 +29,23 @@ p {
 .lab-title {
   font-size: 30px;
 }
+
+a:link {
+  color: #536DFE;
+  text-decoration: none;
+}
+
+a:visited {
+  color: #536DFE;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #536DFE;
+  text-decoration: none;
+}
+
+a:active {
+  color: #536DFE;
+  text-decoration: none;
+}
