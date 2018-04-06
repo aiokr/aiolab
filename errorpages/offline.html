@@ -2,54 +2,626 @@
 <html>
 
 <head>
-  <meta charset="utf-8">
-  <title>aiokr</title>
-  <meta name="HandheldFriendly" content="true">
-  <link rel="icon" sizes="192x192" href="../assets/images/192.png">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=no">
+  <title>Offline</title>
   <style>
-    /* .mdui-typo-display-3 */
-
-    .mdui-typo-display-3,
-    .mdui-typo-display-3-opacity {
-      font-size: 56px;
-      font-weight: 400;
-      letter-spacing: -.02em;
+    a {
+      color: rgb(88, 88, 88);
     }
 
-    /* 文本居中对齐 */
-
-    .mdui-text-center {
-      text-align: center !important;
+    body {
+      background-color: rgb(247, 247, 247);
+      color: rgb(100, 100, 100);
     }
 
-    /* 水平居中 */
-
-    .mdui-center {
-      display: block !important;
-      margin-right: auto !important;
-      margin-left: auto !important;
+    .hidden {
+      display: none;
     }
 
-    /* 垂直居中 */
+    html {
+      -webkit-text-size-adjust: 100%;
+      font-size: 125%;
+    }
 
-    .mdui-valign {
-      display: -webkit-box !important;
-      display: -webkit-flex !important;
-      display: -ms-flexbox !important;
-      display: flex !important;
-
-      -webkit-box-align: center !important;
-      -webkit-align-items: center !important;
-      -ms-flex-align: center !important;
-      align-items: center !important;
+    .icon {
+      background-repeat: no-repeat;
+      background-size: 100%;
     }
   </style>
+  <style>
+    button {
+      border: 0;
+      border-radius: 2px;
+      box-sizing: border-box;
+      color: rgb(66, 133, 244);
+      cursor: pointer;
+      float: right;
+      font-size: .875em;
+      margin: 0;
+      padding: 10px 24px;
+      transition: box-shadow 200ms cubic-bezier(0.4, 0, 0.2, 1);
+      user-select: none;
+    }
+
+    .a-button {
+      border: 0;
+      border-radius: 2px;
+      box-sizing: border-box;
+      background-color: rgb(66, 133, 244);
+      color: #fff;
+      cursor: pointer;
+      float: right;
+      font-size: .875em;
+      margin: 0;
+      padding: 10px 24px;
+      transition: box-shadow 200ms cubic-bezier(0.4, 0, 0.2, 1);
+      user-select: none;
+    }
+
+    [dir='rtl'] button {
+      float: left;
+    }
+
+    .bad-clock button,
+    .captive-portal button,
+    .main-frame-blocked button,
+    .neterror button,
+    .offline button,
+    .ssl button {
+      background: rgb(66, 133, 244);
+    }
+
+    button:active {
+      background: rgb(50, 102, 213);
+      outline: 0;
+    }
+
+    button:hover {
+      box-shadow: 0 1px 3px rgba(0, 0, 0, .50);
+    }
+
+    .a-button:active {
+      background: rgb(50, 102, 213);
+      outline: 0;
+    }
+
+    .a-button:hover {
+      box-shadow: 0 1px 3px rgba(0, 0, 0, .50);
+    }
+
+    h1 {
+      color: #333;
+      font-size: 1.6em;
+      font-weight: normal;
+      line-height: 1.25em;
+      margin-bottom: 16px;
+    }
+
+    h2 {
+      font-size: 1.2em;
+      font-weight: normal;
+    }
+
+    .icon {
+      height: 72px;
+      margin: 0 0 40px;
+      width: 72px;
+    }
+
+    .interstitial-wrapper {
+      box-sizing: border-box;
+      font-size: 1em;
+      line-height: 1.6em;
+      margin: 14vh auto 0;
+      max-width: 600px;
+      width: 100%;
+    }
+
+    #main-message>p {
+      display: inline;
+    }
+
+    #extended-reporting-opt-in {
+      font-size: .875em;
+      margin-top: 39px;
+    }
+
+    #extended-reporting-opt-in label {
+      position: relative;
+      display: flex;
+      align-items: flex-start;
+    }
+
+    .nav-wrapper {
+      margin-top: 51px;
+    }
+
+    .nav-wrapper::after {
+      clear: both;
+      content: '';
+      display: table;
+      width: 100%;
+    }
+
+    .small-link {
+      color: #696969;
+      font-size: .875em;
+    }
+
+    input[type=checkbox]:checked~.checkbox::before {
+      opacity: 1;
+    }
+
+    @media (max-width: 700px) {
+      .interstitial-wrapper {
+        padding: 0 10%;
+      }
+
+      #error-debugging-info {
+        overflow: auto;
+      }
+    }
+
+    @media (max-height: 600px) {
+      .error-code {
+        margin-top: 10px;
+      }
+    }
+
+    @media (max-width: 420px) {
+      button,
+      [dir='rtl'] button,
+      .small-link {
+        float: none;
+        font-size: .825em;
+        font-weight: 400;
+        margin: 0;
+        text-transform: uppercase;
+        width: 100%;
+      }
+
+      .a-button {
+        font-size: .825em;
+        font-weight: 400;
+        margin: 0;
+        text-transform: uppercase;
+        text-align: center;
+        width: 100%;
+      }
+
+
+
+      .nav-wrapper {
+        margin-top: 30px;
+      }
+    }
+
+    /**
+
+
+    @media (max-width: 420px) {
+      #details-button {
+        border: 0;
+        margin: 8px 0 0;
+      }
+
+      .secondary-button {
+        -webkit-margin-end: 0;
+        margin-top: 16px;
+      }
+    }
+
+    /* Fixed nav. */
+
+    @media (min-width: 240px) and (max-width: 420px) and (min-height: 401px),
+    (min-width: 421px) and (min-height: 240px) and (max-height: 560px) {
+      body .nav-wrapper {
+        background: #f7f7f7;
+        bottom: 0;
+        box-shadow: 0 -22px 40px rgb(247, 247, 247);
+        left: 0;
+        margin: 0 auto;
+        max-width: 736px;
+        padding-left: 24px;
+        padding-right: 24px;
+        position: fixed;
+        right: 0;
+        width: 100%;
+        z-index: 2;
+      }
+
+      .interstitial-wrapper {
+        max-width: 736px;
+      }
+
+      #details,
+      #main-content {
+        padding-bottom: 40px;
+      }
+
+      #details {
+        padding-top: 5.5vh;
+      }
+
+      #details-button:hover {
+        box-shadow: none;
+      }
+    }
+
+    @media (max-width: 420px) and (orientation: portrait),
+    (max-height: 560px) {
+      body {
+        margin: 0 auto;
+      }
+
+      button,
+      [dir='rtl'] button,
+      button.small-link {
+        font-family: Roboto-Regular, Helvetica;
+        font-size: .933em;
+        font-weight: 600;
+        margin: 6px 0;
+        text-transform: uppercase;
+        transform: translatez(0);
+      }
+
+      .nav-wrapper {
+        box-sizing: border-box;
+        padding-bottom: 8px;
+        width: 100%;
+      }
+
+      .error-code {
+        margin-top: 0;
+      }
+
+
+      h1 {
+        font-size: 1.5em;
+        margin-bottom: 8px;
+      }
+
+      .icon {
+        margin-bottom: 5.69vh;
+      }
+
+      .interstitial-wrapper {
+        box-sizing: border-box;
+        margin: 7vh auto 12px;
+        padding: 0 24px;
+        position: relative;
+      }
+
+      .interstitial-wrapper p {
+        font-size: .95em;
+        line-height: 1.61em;
+        margin-top: 8px;
+      }
+
+      #main-content {
+        margin: 0;
+        transition: opacity 100ms cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      .small-link {
+        border: 0;
+      }
+
+      .suggested-left>#control-buttons,
+      .suggested-right>#control-buttons {
+        float: none;
+        margin: 0;
+      }
+    }
+
+    @media (min-width: 421px) and (min-height: 500px) and (max-height: 560px) {
+      .interstitial-wrapper {
+        margin-top: 10vh;
+      }
+    }
+
+    @media (min-height: 400px) and (orientation:portrait) {
+      .interstitial-wrapper {
+        margin-bottom: 145px;
+      }
+    }
+
+    @media (min-height: 299px) {
+      .nav-wrapper {
+        padding-bottom: 16px;
+      }
+    }
+
+    @media (min-height: 500px) and (max-height: 650px) and (max-width: 414px) and (orientation: portrait) {
+      .interstitial-wrapper {
+        margin-top: 7vh;
+      }
+    }
+
+    @media (min-height: 650px) and (max-width: 414px) and (orientation: portrait) {
+      .interstitial-wrapper {
+        margin-top: 10vh;
+      }
+    }
+
+    /* Small mobile screens. No fixed nav. */
+
+    @media (max-height: 400px) and (orientation: portrait),
+    (max-height: 239px) and (orientation: landscape),
+    (max-width: 419px) and (max-height: 399px) {
+      .interstitial-wrapper {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 0;
+      }
+
+
+      #main-content {
+        flex: 1 1 auto;
+        order: 0;
+      }
+
+      .nav-wrapper {
+        flex: 0 1 auto;
+        margin-top: 8px;
+        order: 1;
+        padding-left: 0;
+        padding-right: 0;
+        position: relative;
+        width: 100%;
+      }
+    }
+
+    @media (max-width: 239px) and (orientation: portrait) {
+      .nav-wrapper {
+        padding-left: 0;
+        padding-right: 0;
+      }
+    }
+  </style>
+  <style>
+    html[subframe] #main-frame-error {
+      display: none;
+    }
+
+    /* Don't use the subframe error div when the error is in a main frame. */
+
+    html:not([subframe]) #sub-frame-error {
+      display: none;
+    }
+
+
+
+    h1 {
+      margin-top: 0;
+      word-wrap: break-word;
+    }
+
+    h1 span {
+      font-weight: 500;
+    }
+
+    h2 {
+      color: #666;
+      font-size: 1.2em;
+      font-weight: normal;
+      margin: 10px 0;
+    }
+
+    a {
+      color: rgb(17, 85, 204);
+      text-decoration: none;
+    }
+
+    .icon {
+      -webkit-user-select: none;
+      display: inline-block;
+    }
+
+    .icon-generic {
+      /**
+   * Can't access chrome://theme/IDR_ERROR_NETWORK_GENERIC from an untrusted
+   * renderer process, so embed the resource manually.
+   */
+      content: -webkit-image-set( url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEgAAABIAQMAAABvIyEEAAAABlBMVEUAAABTU1OoaSf/AAAAAXRSTlMAQObYZgAAAENJREFUeF7tzbEJACEQRNGBLeAasBCza2lLEGx0CxFGG9hBMDDxRy/72O9FMnIFapGylsu1fgoBdkXfUHLrQgdfrlJN1BdYBjQQm3UAAAAASUVORK5CYII=) 1x,
+      url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJAAAACQAQMAAADdiHD7AAAABlBMVEUAAABTU1OoaSf/AAAAAXRSTlMAQObYZgAAAFJJREFUeF7t0cENgDAMQ9FwYgxG6WjpaIzCCAxQxVggFuDiCvlLOeRdHR9yzjncHVoq3npu+wQUrUuJHylSTmBaespJyJQoObUeyxDQb3bEm5Au81c0pSCD8HYAAAAASUVORK5CYII=) 2x);
+    }
+
+    .icon-offline {
+      content: -webkit-image-set( url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEgAAABIAQMAAABvIyEEAAAABlBMVEUAAABTU1OoaSf/AAAAAXRSTlMAQObYZgAAAGxJREFUeF7tyMEJwkAQRuFf5ipMKxYQiJ3Z2nSwrWwBA0+DQZcdxEOueaePp9+dQZFB7GpUcURSVU66yVNFj6LFICatThZB6r/ko/pbRpUgilY0Cbw5sNmb9txGXUKyuH7eV25x39DtJXUNPQGJtWFV+BT/QAAAAABJRU5ErkJggg==) 1x,
+      url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJAAAACQBAMAAAAVaP+LAAAAGFBMVEUAAABTU1NNTU1TU1NPT09SUlJSUlJTU1O8B7DEAAAAB3RSTlMAoArVKvVgBuEdKgAAAJ1JREFUeF7t1TEOwyAMQNG0Q6/UE+RMXD9d/tC6womIFSL9P+MnAYOXeTIzMzMzMzMzaz8J9Ri6HoITmuHXhISE8nEh9yxDh55aCEUoTGbbQwjqHwIkRAEiIaG0+0AA9VBMaE89Rogeoww936MQrWdBr4GN/z0IAdQ6nQ/FIpRXDwHcA+JIJcQowQAlFUA0MfQpXLlVQfkzR4igS6ENjknm/wiaGhsAAAAASUVORK5CYII=) 2x);
+      position: relative;
+    }
+
+
+
+    .error-code {
+      display: block;
+      font-size: .8em;
+    }
+
+
+
+    /* Decrease padding at low sizes. */
+
+    @media (max-width: 640px),
+    (max-height: 640px) {
+      h1 {
+        margin: 0 0 15px;
+      }
+      #content-top {
+        margin: 15px;
+      }
+      #help-box-inner {
+        padding: 20px;
+      }
+      .suggestions {
+        margin-top: 10px;
+      }
+      .suggestion-header {
+        margin-bottom: 0;
+      }
+    }
+
+    /* Don't allow overflow when in a subframe. */
+
+    html[subframe] body {
+      overflow: hidden;
+    }
+
+    /* If the iframe is too small, always hide the error code. */
+
+    /* TODO(mmenke): See if overflow: no-display works better, once supported. */
+
+    @media (max-width: 200px),
+    (max-height: 95px) {
+      #sub-frame-error-details {
+        display: none;
+      }
+    }
+
+    /* Adjust icon for small embedded frames in apps. */
+
+    @media (max-height: 100px) {
+      #sub-frame-error .icon-generic {
+        height: auto;
+        margin: 0;
+        padding-top: 0;
+        width: 25px;
+      }
+    }
+
+    /* Styles for platform dependent separation of controls and details button. */
+
+    .suggested-left>#control-buttons,
+    .suggested-left #stale-load-button,
+    .suggested-right>#details-button {
+      float: left;
+    }
+
+    .suggested-right>#control-buttons,
+    .suggested-right #stale-load-button,
+    .suggested-left>#details-button {
+      float: right;
+    }
+
+    .suggested-left .secondary-button {
+      -webkit-margin-end: 0px;
+      -webkit-margin-start: 16px;
+    }
+
+    #buttons::after {
+      clear: both;
+      content: '';
+      display: block;
+      width: 100%;
+    }
+
+    @media (max-width: 420px) {
+      .suggested-left>#control-buttons,
+      .suggested-right>#control-buttons {
+        float: none;
+      }
+
+      .snackbar {
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        border-radius: 0;
+      }
+    }
+
+    @media (max-height: 350px) {
+      h1 {
+        margin: 0 0 15px;
+      }
+
+      .icon-offline {
+        margin: 0 0 10px;
+      }
+
+      .interstitial-wrapper {
+        margin-top: 5%;
+      }
+
+      .nav-wrapper {
+        margin-top: 30px;
+      }
+    }
+
+    @media (min-width: 420px) and (max-width: 736px) and (min-height: 240px) and (max-height: 420px) and (orientation:landscape) {
+      .interstitial-wrapper {
+        margin-bottom: 100px;
+      }
+    }
+
+    @media (max-width: 360px) and (max-height: 480px) {
+      .offline .interstitial-wrapper {
+        padding-top: 60px;
+      }
+
+      .offline .runner-container {
+        top: 8px;
+      }
+    }
+
+    @media (min-height: 240px) and (orientation: landscape) {
+      .offline .interstitial-wrapper {
+        margin-bottom: 90px;
+      }
+
+      .icon-offline {
+        margin-bottom: 20px;
+      }
+    }
+
+    @media (max-height: 320px) and (orientation: landscape) {
+      .icon-offline {
+        margin-bottom: 0;
+      }
+
+      .offline .runner-container {
+        top: 10px;
+      }
+    }
+
+    @media (max-width: 240px) {
+      button {
+        padding-left: 12px;
+        padding-right: 12px;
+      }
+
+      .interstitial-wrapper {
+        overflow: inherit;
+        padding: 0 8px;
+      }
+    }
+
+    @media (max-width: 120px) {
+      button {
+        width: 100%;
+      }
+    }
+  </style>
+
 </head>
 
-<body>
-  <div class="mdui-valign" style="height: 80vh">
-    <div class="mdui-typo-display-3 mdui-center mdui-text-center">Offline</div>
+<body style="font-family: Segoe UI,Arial,Microsoft Yahei,sans-serif; font-size: 75%" jstcache="0" class="neterror">
+  <div id="main-frame-error" class="interstitial-wrapper" jstcache="0">
+    <div id="main-content" jstcache="0">
+      <div class="icon icon-offline" jseval="updateIconClass(this.classList, iconClass)" alt="" jstcache="1"></div>
+      <div id="main-message" jstcache="0">
+        <h1 jsselect="heading" jsvalues=".innerHTML:msg" jstcache="5">未连接到互联网</h1>
+        <p jsselect="summary" jsvalues=".innerHTML:msg" jstcache="2">您正处于离线状态，请检查您的网络链接</p>
+        <div class="error-code" jscontent="errorCode" jstcache="7">ERR_INTERNET_DISCONNECTED</div>
+        <div id="diagnose-frame" class="hidden" jstcache="0"></div>
+        <div id="buttons" class="nav-wrapper suggested-left" jstcache="0">
+        </div>
+      </div>
+    </div>
   </div>
+
 </body>
 
 </html>
