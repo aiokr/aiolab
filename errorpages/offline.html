@@ -2,11 +2,54 @@
 <html>
 
 <head>
-    <meta charset="utf-8">
-    <title>aiokr</title>
-    <meta name="HandheldFriendly" content="true">
-    <link rel="icon" sizes="192x192" href="../assets/images/192.png">
-    <style>
+  <meta charset="utf-8">
+  <title>aiokr</title>
+  <meta name="HandheldFriendly" content="true">
+  <link rel="icon" sizes="192x192" href="../assets/images/192.png">
+  <style>
+    /* .mdui-typo-display-3 */
 
-    </style>
+    .mdui-typo-display-3,
+    .mdui-typo-display-3-opacity {
+      font-size: 56px;
+      font-weight: 400;
+      letter-spacing: -.02em;
+    }
+
+    /* 文本居中对齐 */
+
+    .mdui-text-center {
+      text-align: center !important;
+    }
+
+    /* 水平居中 */
+
+    .mdui-center {
+      display: block !important;
+      margin-right: auto !important;
+      margin-left: auto !important;
+    }
+
+    /* 垂直居中 */
+
+    .mdui-valign {
+      display: -webkit-box !important;
+      display: -webkit-flex !important;
+      display: -ms-flexbox !important;
+      display: flex !important;
+
+      -webkit-box-align: center !important;
+      -webkit-align-items: center !important;
+      -ms-flex-align: center !important;
+      align-items: center !important;
+    }
+  </style>
 </head>
+
+<body>
+  <div class="mdui-valign" style="height: 80vh">
+    <div class="mdui-typo-display-3 mdui-center mdui-text-center">Offline</div>
+  </div>
+</body>
+
+</html>
