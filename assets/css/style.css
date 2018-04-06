@@ -2,6 +2,10 @@ h1 {
   text-align: center;
 }
 
+.avatar-padding {
+  padding: 20px;
+}
+
 .before-padding {
   padding: 65px;
 }
@@ -16,4 +20,12 @@ h1 {
 
 .padding-20 {
   padding: 20px;
+}
+
+p {
+  font-size: 18px;
+}
+
+.lab-title {
+  font-size: 30px;
 }
