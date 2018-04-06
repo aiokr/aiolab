@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-dns-prefetch-control" content="on">
+  <title>air
+  </title>
+  <meta name="HandheldFriendly" content="true">
+  <link rel="icon" sizes="192x192" href="../assets/images/192.png">
+  <link rel="stylesheet" href="../assets/css/spectre.min.css">
+  <link rel="stylesheet" href="../assets/css/spectre-exp.min.css">
+  <link rel="stylesheet" href="../assets/css/spectre-icons.min.css">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+</head>
+
+<body>
+  <div id="caiyun">
+    <p id="demo">彩云天气数据</p>
+    <script>
+      var caiyunApi = $.getJSON("https://api.caiyunapp.com/v2/-WeDXtBdsjIJU7bt/109.4289,24.3564/realtime.json",
+        function (data) {
+          alert(data.status);
+        });
+      document.write(caiyunApi.status.skycon);
+    </script>
+  </div>
+</body>
+
+
+</html>
