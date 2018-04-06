@@ -1,12 +1,7 @@
 {
-  "short_name": "aiokr' Lab",
-  "name": "aiokr's Lab",
+  "short_name": "aiokr' lab",
+  "name": "aiokr's lab",
   "icons": [
-    {
-      "src": "./assets/images/144.png",
-      "type": "image/png",
-      "sizes": "144x144"
-    },
     {
       "src": "./assets/images/192.png",
       "type": "image/png",
