@@ -1,56 +1,69 @@
 h1 {
   text-align: center;
+  font-size: 2em;
+  font-weight: bold;
 }
 
 .avatar-padding {
-  padding: 20px;
+    padding: 20px;
 }
 
 .before-padding {
-  padding: 65px;
+    padding: 65px;
 }
 
 .after-padding {
-  padding: 65px;
+    padding: 65px;
 }
 
 .padding {
-  padding: 10px;
+    padding: 10px;
 }
 
 .padding-20 {
-  padding: 20px;
+    padding: 20px;
 }
 
 p {
-  font-size: 18px;
+    font-size: 18px;
 }
 
 .lab-title {
-  font-size: 30px;
+  font-size: 1.5em;
+  padding-top: 1.5em;
+  padding-bottom: 0.5em;
+  color: #50596c;
+}
+
+div {
+  text-align: left;
+  width: 96%;
+  margin-bottom: 20px;
+  font-size: 1em;
+  color: #50596c;
 }
 
 a {
-  color: #536DFE;
-  text-decoration: none;
+    color: #536DFE;
+    text-decoration: none;
 }
 
 a:link {
-  color: #536DFE;
-  text-decoration: none;
+    color: #536DFE;
+    text-decoration: none;
 }
 
 a:visited {
-  color: #536DFE;
-  text-decoration: none;
+    color: #536DFE;
+    text-decoration: none;
 }
 
 a:hover {
-  color: #536DFE;
-  text-decoration: none;
+    color: #536DFE;
+    text-decoration: none;
 }
 
 a:active {
-  color: #536DFE;
-  text-decoration: none;
+    color: #536DFE;
+    text-decoration: none;
 }

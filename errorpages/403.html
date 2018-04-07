@@ -4,7 +4,7 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=no">
-  <title>Offline</title>
+  <title>403</title>
   <style>
     a {
       color: rgb(88, 88, 88);
@@ -428,11 +428,6 @@
       url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJAAAACQAQMAAADdiHD7AAAABlBMVEUAAABTU1OoaSf/AAAAAXRSTlMAQObYZgAAAFJJREFUeF7t0cENgDAMQ9FwYgxG6WjpaIzCCAxQxVggFuDiCvlLOeRdHR9yzjncHVoq3npu+wQUrUuJHylSTmBaespJyJQoObUeyxDQb3bEm5Au81c0pSCD8HYAAAAASUVORK5CYII=) 2x);
     }
 
-    .icon-offline {
-      content: -webkit-image-set( url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEgAAABIAQMAAABvIyEEAAAABlBMVEUAAABTU1OoaSf/AAAAAXRSTlMAQObYZgAAAGxJREFUeF7tyMEJwkAQRuFf5ipMKxYQiJ3Z2nSwrWwBA0+DQZcdxEOueaePp9+dQZFB7GpUcURSVU66yVNFj6LFICatThZB6r/ko/pbRpUgilY0Cbw5sNmb9txGXUKyuH7eV25x39DtJXUNPQGJtWFV+BT/QAAAAABJRU5ErkJggg==) 1x,
-      url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJAAAACQBAMAAAAVaP+LAAAAGFBMVEUAAABTU1NNTU1TU1NPT09SUlJSUlJTU1O8B7DEAAAAB3RSTlMAoArVKvVgBuEdKgAAAJ1JREFUeF7t1TEOwyAMQNG0Q6/UE+RMXD9d/tC6womIFSL9P+MnAYOXeTIzMzMzMzMzaz8J9Ri6HoITmuHXhISE8nEh9yxDh55aCEUoTGbbQwjqHwIkRAEiIaG0+0AA9VBMaE89Rogeoww936MQrWdBr4GN/z0IAdQ6nQ/FIpRXDwHcA+JIJcQowQAlFUA0MfQpXLlVQfkzR4igS6ENjknm/wiaGhsAAAAASUVORK5CYII=) 2x);
-      position: relative;
-    }
 
 
 
@@ -610,14 +605,19 @@
 <body style="font-family: Segoe UI,Arial,Microsoft Yahei,sans-serif; font-size: 75%" jstcache="0" class="neterror">
   <div id="main-frame-error" class="interstitial-wrapper" jstcache="0">
     <div id="main-content" jstcache="0">
-      <div class="icon icon-offline" jseval="updateIconClass(this.classList, iconClass)" alt="" jstcache="1"></div>
+      <div class="icon icon-generic" jseval="updateIconClass(this.classList, iconClass)" alt="" jstcache="1"></div>
       <div id="main-message" jstcache="0">
-        <h1>未连接到互联网</h1>
-        <h1>Not connected to the Interenet</h1>
-        <p>您正处于离线状态，请检查您的网络链接</p>
-        <div>ERR_INTERNET_DISCONNECTED</div>
+        <h1>您没有权限访问此资源</h1>
+        <h1>You do not have the enough permission to requested this resources</h1>
+        <p>尝试联系网站管理员以获取更多信息</p>
+        <div class="error-code" jscontent="errorCode" jstcache="7">ERR_403</div>
         <div id="diagnose-frame" class="hidden" jstcache="0"></div>
         <div id="buttons" class="nav-wrapper suggested-left" jstcache="0">
+          <div id="control-buttons" jstcache="0">
+            <a href="https://aiokr.github.io" target="_blank" id="reload-button" class="a-button blue-button text-button" onclick="trackClick(this.trackingId);
+                         reloadButtonClick(this.url);" jsselect="reloadButton" jsvalues=".url:reloadUrl; .trackingId:reloadTrackingId"
+              jscontent="msg" jstcache="8">返回首页</a>
+          </div>
         </div>
       </div>
     </div>
